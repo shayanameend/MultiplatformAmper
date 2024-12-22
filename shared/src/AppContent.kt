@@ -21,9 +21,12 @@ object ListDestination
 data class DetailDestination(val objectId: Int)
 
 @Composable
-fun AppContent(contentIndexState: MutableState<Int>) {
+fun AppContent(
+  modifier: Modifier = Modifier,
+  contentIndexState: MutableState<Int>,
+) {
   Column(
-    modifier = Modifier.fillMaxSize(),
+    modifier = modifier.fillMaxSize(),
     verticalArrangement = Arrangement.Center,
     horizontalAlignment = Alignment.CenterHorizontally,
   ) {
