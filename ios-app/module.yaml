@@ -1,0 +1,14 @@
+product:
+  type: ios/app
+  platforms: [ iosSimulatorArm64 ]
+
+dependencies:
+  - ../shared
+  - io.ktor:ktor-client-darwin:3.0.1
+
+settings:
+  compose:
+    version: 1.7.1
+    enabled: true
+  ios:
+    teamId: <Team ID>

@@ -1,0 +1,23 @@
+product:
+  type: android/app
+  platforms: [ android ]
+
+dependencies:
+  - ../shared
+  - $compose.uiTooling
+  - androidx.activity:activity-compose:1.9.3
+  - org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0
+  - io.ktor:ktor-client-okhttp:3.0.1
+
+settings:
+  compose:
+    version: 1.7.1
+    enabled: true
+  android:
+    namespace: com.zedsols.multiplatform_amper
+    compileSdk: 35
+    minSdk: 21
+    targetSdk: 35
+    applicationId: com.zedsols.multiplatform_amper.androidApp
+    versionCode: 1
+    versionName: "1.0.0"
