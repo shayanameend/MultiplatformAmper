@@ -9,23 +9,25 @@ dependencies:
   - $compose.materialIconsExtended: exported
   - $compose.components.resources: exported
   - $kotlin.serialization.json: exported
-  - co.touchlab:kermit:2.0.5: exported
+  - org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:2.8.4: exported
+  - org.jetbrains.androidx.lifecycle:lifecycle-viewmodel:2.8.4: exported
+  - org.jetbrains.androidx.navigation:navigation-compose:2.8.0-alpha10: exported
   - org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0: exported
+  - org.jetbrains.kotlinx:kotlinx-datetime:0.6.1: exported
+  - com.russhwolf:multiplatform-settings:1.2.0: exported
+  - co.touchlab:kermit:2.0.5: exported
+  - io.github.xxfast:kstore:0.9.1: exported
+  - androidx.room:room-runtime:2.7.0-alpha09: exported
+  - io.insert-koin:koin-core:4.0.0: exported
+  - io.insert-koin:koin-compose:4.0.0: exported
+  - io.insert-koin:koin-compose-viewmodel:4.0.0: exported
+  - io.coil-kt.coil3:coil-compose-core:3.0.4: exported
+  - io.coil-kt.coil3:coil-network-ktor3:3.0.4: exported
   - io.ktor:ktor-client-core:3.0.1: exported
   - io.ktor:ktor-client-content-negotiation:3.0.1: exported
   - io.ktor:ktor-client-serialization:3.0.1: exported
   - io.ktor:ktor-client-logging:3.0.1: exported
-  - org.jetbrains.androidx.lifecycle:lifecycle-viewmodel:2.8.4: exported
-  - org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose:2.8.4: exported
-  - org.jetbrains.androidx.navigation:navigation-compose:2.8.0-alpha10: exported
-  - io.insert-koin:koin-core:4.0.0: exported
-  - io.insert-koin:koin-compose:4.0.0: exported
-  - io.coil-kt.coil3:coil-compose-core:3.0.4: exported
-  - io.coil-kt.coil3:coil-network-ktor3:3.0.4: exported
-  - com.russhwolf:multiplatform-settings:1.2.0: exported
-  - org.jetbrains.kotlinx:kotlinx-datetime:0.6.1: exported
-  - androidx.room:room-runtime:2.7.0-alpha09: exported
-  - io.github.xxfast:kstore:0.9.1: exported
+  - io.ktor:ktor-serialization-kotlinx-json:3.0.1: exported
   - br.com.devsrsouza.compose.icons:font-awesome:1.1.1: exported
 
 settings:

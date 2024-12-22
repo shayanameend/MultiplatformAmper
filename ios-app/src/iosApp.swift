@@ -18,6 +18,10 @@ struct ContentView: View {
 
 @main
 struct iosApp: App {
+    init() {
+        KoinKt.init()
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
