@@ -1,4 +1,4 @@
-package com.zedsols.multiplatform_amper
+package com.zedsols.multiplatform_app
 
 import android.app.Application
 

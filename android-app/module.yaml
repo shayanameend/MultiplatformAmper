@@ -14,10 +14,4 @@ settings:
     version: 1.7.1
     enabled: true
   android:
-    namespace: com.zedsols.multiplatform_amper
-    compileSdk: 35
-    minSdk: 21
-    targetSdk: 35
-    applicationId: com.zedsols.multiplatform_amper.androidApp
-    versionCode: 1
-    versionName: "1.0.0"
+    namespace: com.zedsols.multiplatform_app
