@@ -1,7 +1,7 @@
 import di.initKoin
 
 object KoinKt {
-  fun init() {
+  fun doInit() {
     initKoin()
   }
 }

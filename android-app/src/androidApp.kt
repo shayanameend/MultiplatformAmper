@@ -6,6 +6,6 @@ class AndroidApp : Application() {
   override fun onCreate() {
     super.onCreate()
 
-    KoinKt.init()
+    KoinKt.doInit()
   }
 }

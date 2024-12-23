@@ -19,7 +19,7 @@ struct ContentView: View {
 @main
 struct iosApp: App {
     init() {
-        KoinKt.init()
+        KoinKt.doInit()
     }
 
     var body: some Scene {
