@@ -7,10 +7,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Multiplatform App"
-        android:name="com.zedsols.multiplatform_app.AndroidApp"
+        android:name=".AndroidApp"
         android:theme="@android:style/Theme.Material.NoActionBar">
         <activity
-            android:name="com.zedsols.multiplatform_app.MainActivity"
+            android:name=".MainActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustPan"

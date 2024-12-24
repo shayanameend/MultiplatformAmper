@@ -1,5 +1,6 @@
 package com.zedsols.multiplatform_app
 
+import KoinKt
 import android.app.Application
 
 class AndroidApp : Application() {
