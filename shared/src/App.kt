@@ -1,3 +1,4 @@
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.TextSnippet
 import androidx.compose.material.icons.filled.FormatPaint
@@ -12,6 +13,16 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import theme.AppTheme
 
 const val narrowScreenWidthThreshold = 1300
+
+val LocalSnackbarHostState =
+  compositionLocalOf<SnackbarHostState> { error("SnackbarHostState is not found") }
+
+val LocalDrawerState =
+  compositionLocalOf<DrawerState> { error("DrawerState is not found") }
+
+@OptIn(ExperimentalMaterial3Api::class)
+val LocalBottomSheetScaffoldState =
+  compositionLocalOf<BottomSheetScaffoldState> { error("BottomSheetScaffoldState is not found") }
 
 data class Screen(
   val title: String,
@@ -35,65 +46,101 @@ fun App() = AppTheme {
   var selectedScreen by remember { mutableStateOf(screens[0]) }
   val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
 
-  Scaffold(
-    modifier = Modifier
-      .nestedScroll(scrollBehavior.nestedScrollConnection)
-      .onGloballyPositioned {
-        screenWidth = it.size.width
-      },
-    snackbarHost = {
-      SnackbarHost(hostState = snackbarHostState)
-    },
-    topBar = {
-      @Composable
-      fun title() {
-        Text("Multiplatform App")
-      }
+  val scaffoldState = rememberBottomSheetScaffoldState(
+    rememberStandardBottomSheetState(
+      initialValue = SheetValue.Hidden,
+      skipHiddenState = false,
+    )
+  )
+  val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
 
-      @Composable
-      fun actions() {
-        IconButton(
-          onClick = {}
-        ) {}
-
-        IconButton(
-          onClick = {}
-        ) {}
-      }
-
-      if (screenWidth <= narrowScreenWidthThreshold) {
-        TopAppBar(
-          title = { title() },
-          scrollBehavior = scrollBehavior,
-          actions = { actions() },
-        )
-      } else {
-        CenterAlignedTopAppBar(
-          title = { title() },
-          scrollBehavior = scrollBehavior,
-          actions = { actions() },
-        )
-      }
-    },
-    bottomBar = {
-      if (screenWidth <= narrowScreenWidthThreshold) {
-        NavigationBar {
-          screens.forEach { screen ->
-            NavigationBarItem(
-              icon = { Icon(screen.icon, contentDescription = screen.title) },
-              label = { Text(screen.title) },
-              selected = selectedScreen == screen,
-              onClick = {
-                scrollBehavior.state.contentOffset = 0f
-                selectedScreen = screen
-              }
-            )
-          }
-        }
+  ModalNavigationDrawer(
+    drawerState = drawerState,
+    drawerContent = {
+      ModalDrawerSheet {
+//        NavigationDrawerContent()
       }
     },
   ) {
-    selectedScreen.content()
+    Scaffold(
+      modifier = Modifier
+        .nestedScroll(scrollBehavior.nestedScrollConnection)
+        .onGloballyPositioned {
+          screenWidth = it.size.width
+        },
+      snackbarHost = {
+        SnackbarHost(hostState = snackbarHostState)
+      },
+      topBar = {
+        @Composable
+        fun title() {
+          Text("Multiplatform App")
+        }
+
+        @Composable
+        fun actions() {
+          IconButton(
+            onClick = {}
+          ) {}
+
+          IconButton(
+            onClick = {}
+          ) {}
+        }
+
+        if (screenWidth <= narrowScreenWidthThreshold) {
+          TopAppBar(
+            title = { title() },
+            scrollBehavior = scrollBehavior,
+            actions = { actions() },
+          )
+        } else {
+          CenterAlignedTopAppBar(
+            title = { title() },
+            scrollBehavior = scrollBehavior,
+            actions = { actions() },
+          )
+        }
+      },
+      bottomBar = {
+        if (screenWidth <= narrowScreenWidthThreshold) {
+          NavigationBar {
+            screens.forEach { screen ->
+              NavigationBarItem(
+                icon = { Icon(screen.icon, contentDescription = screen.title) },
+                label = { Text(screen.title) },
+                selected = selectedScreen == screen,
+                onClick = {
+                  scrollBehavior.state.contentOffset = 0f
+                  selectedScreen = screen
+                }
+              )
+            }
+          }
+        }
+      },
+    ) {
+      Row(
+        modifier = Modifier
+          .padding(it)
+          .consumeWindowInsets(WindowInsets.systemBars)
+      ) {
+        BottomSheetScaffold(
+          scaffoldState = scaffoldState,
+          sheetContent = {
+//            BottomSheetContent()
+          }
+        ) {
+          CompositionLocalProvider(
+            LocalSnackbarHostState provides snackbarHostState,
+            LocalBottomSheetScaffoldState provides scaffoldState,
+            LocalDrawerState provides drawerState,
+          ) {
+            selectedScreen.content()
+          }
+        }
+      }
+    }
   }
 }
 
