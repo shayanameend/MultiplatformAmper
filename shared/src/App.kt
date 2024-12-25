@@ -1,9 +1,7 @@
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.TextSnippet
-import androidx.compose.material.icons.filled.FormatPaint
-import androidx.compose.material.icons.filled.Opacity
-import androidx.compose.material.icons.filled.Widgets
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -11,6 +9,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.onGloballyPositioned
 import theme.AppTheme
+import theme.LocalThemeIsDark
+import views.select_seed_color.SelectSeedColorView
 import views.typography.TypographyView
 
 const val narrowScreenWidthThreshold = 1300
@@ -80,13 +80,19 @@ fun App() = AppTheme {
 
         @Composable
         fun actions() {
-          IconButton(
-            onClick = {}
-          ) {}
+          var isDark by LocalThemeIsDark.current
 
           IconButton(
             onClick = {}
-          ) {}
+          ) {
+            Icon(Icons.Filled.DocumentScanner, contentDescription = null)
+          }
+          IconButton(
+            onClick = {}
+          ) {
+            Icon(if (isDark) Icons.Filled.LightMode else Icons.Filled.DarkMode, contentDescription = null)
+          }
+          SelectSeedColorView()
         }
 
         if (screenWidth <= narrowScreenWidthThreshold) {
