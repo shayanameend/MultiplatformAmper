@@ -88,7 +88,7 @@ fun App() = AppTheme {
             Icon(Icons.Filled.DocumentScanner, contentDescription = null)
           }
           IconButton(
-            onClick = {}
+            onClick = { isDark = !isDark }
           ) {
             Icon(if (isDark) Icons.Filled.LightMode else Icons.Filled.DarkMode, contentDescription = null)
           }
