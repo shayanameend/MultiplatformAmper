@@ -11,6 +11,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.onGloballyPositioned
 import theme.AppTheme
+import views.typography.TypographyView
 
 const val narrowScreenWidthThreshold = 1300
 
@@ -33,7 +34,7 @@ data class Screen(
 val screens = listOf(
   Screen("Components", Icons.Filled.Widgets) {},
   Screen("Color", Icons.Filled.FormatPaint) {},
-  Screen("Typography", Icons.AutoMirrored.Filled.TextSnippet) {},
+  Screen("Typography", Icons.AutoMirrored.Filled.TextSnippet) { TypographyView() },
   Screen("Elevation", Icons.Filled.Opacity) {},
 )
 
